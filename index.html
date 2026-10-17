@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shri Bala G Kitchen</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fffaf2;color:#292015}
+header{background:#641b18;color:white;padding:22px 15px;text-align:center}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.hero{padding:38px 18px;text-align:center;background:#f4dfbd}
+.hero h2{font-size:29px;margin:0 0 12px}
+.hero p{line-height:1.6}
+.btn{display:inline-block;background:#168447;color:white;text-decoration:none;padding:13px 19px;border-radius:9px;font-weight:bold;margin:8px 4px}
+.menu{padding:22px 15px;max-width:750px;margin:auto}
+.menu h2{text-align:center;color:#641b18}
+.item{background:white;border:1px solid #ead9c4;padding:16px;margin:12px 0;border-radius:12px;display:flex;justify-content:space-between;gap:12px}
+.item strong{color:#641b18}
+.note{text-align:center;font-size:13px;color:#665b50}
+footer{text-align:center;background:#641b18;color:white;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>Shri Bala G Kitchen</h1>
+<p>Fresh Taste • Quality Food • Made with Love</p>
+</header>
+<section class="hero">
+<h2>Welcome to Our Kitchen ❤️</h2>
+<p>Delicious food, made fresh for you.<br>Explore our menu and order directly on WhatsApp.</p>
+<a class="btn" href="#menu">View Menu</a>
+<a class="btn" id="topOrder" href="#">Order on WhatsApp</a>
+</section>
+<section class="menu" id="menu">
+<h2>Our Menu 🍽️</h2>
+<p class="note">Sample prices below — update them before accepting orders.</p>
+<div id="items"></div>
+</section>
+<footer>
+<h3>Shri Bala G Kitchen</h3>
+<p>Thank you for choosing us!</p>
+<p>For orders, contact us on WhatsApp.</p>
+</footer>
+<script>
+const WHATSAPP_NUMBER = "91XXXXXXXXXX";
+const menu = [
+["Veg Burger",79],
+["French Fries",69],
+["Choco Lava",99],
+["Brownie",89],
+["Sizzler Brownie",149]
+];
+const items = document.getElementById("items");
+menu.forEach(([name,price])=>{
+const row=document.createElement("div");
+row.className="item";
+const title=document.createElement("span");
+title.textContent=name;
+const cost=document.createElement("strong");
+cost.textContent="₹"+price;
+row.append(title,cost);
+items.appendChild(row);
+});
+function orderLink(){
+return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent("Hello Shri Bala G Kitchen, I want to place an order.");
+}
+document.getElementById("topOrder").href=orderLink();
+</script>
+</body>
+</html>
