@@ -496,7 +496,7 @@
     (function () {
       "use strict";
 
-      const whatsappNumber = "917878727180";
+      const whatsappNumber = "917878727180,";
 
       const plans = [
         { name: "Monthly Classic Tiffin", price: 2200, detail: "Monthly package • 30 days" },
@@ -564,25 +564,23 @@
         const phone = document.getElementById("customerPhone").value.trim();
         const address = document.getElementById("address").value.trim();
         const startDate = document.getElementById("startDate").value;
-        const instructions = document.getElementById("instructions").value.trim();
         const plan = plans[selectedPlan];
 
         if (!/^[0-9]{10}$/.test(phone)) {
-          alert("Kripya 10 digit mobile number likhein.");
+          alert("fill a contact number.");
           return;
         }
 
         const message = [
-          "Namaste Shri Bala G Kitchen!",
+          "hey Shri Bala G Kitchen!",
           "",
-          "Mujhe tiffin order karna hai.",
+          "please order a tiffin .",
           "Name: " + name,
           "Mobile: " + phone,
           "Plan: " + plan.name,
           "Price: " + formatPrice(plan.price),
           "Meal Time: " + meal.value,
           "Delivery Address: " + address,
-          "Extra Instructions: " + (instructions || "None"),
           "",
           "please conform a order ."
         ].join("\n");
