@@ -339,7 +339,7 @@
     <section class="hero">
       <span class="eyebrow">Fresh • Homemade • Delicious</span>
       <h2>Ghar Jaisa Khana,<br>Aapke Darwaze Par ❤️</h2>
-      <p>Apna pasandida tiffin plan chunein aur massg on .</p>
+      <p>Apna favourite tiffin plan chunein aur massg on .</p>
     </section>
 
     <section id="plans-section">
@@ -350,7 +350,7 @@
         <button type="button" class="plan selected" data-index="0" aria-pressed="true">
           <span class="plan-top">
             <span class="plan-name">Monthly Classic Tiffin</span>
-            <span class="price">₹2,200</span>
+            <span class="price">₹2,199</span>
           </span>
           <span class="plan-detail">Monthly package • 30 din</span>
           <span class="select-hint">Tap to select</span>
@@ -359,7 +359,7 @@
         <button type="button" class="plan" data-index="1" aria-pressed="false">
           <span class="plan-top">
             <span class="plan-name">Monthly Premium Tiffin</span>
-            <span class="price">₹2,000</span>
+            <span class="price">₹1999</span>
           </span>
           <span class="plan-detail">Monthly package • 30 din</span>
           <span class="select-hint">Tap to select</span>
@@ -368,7 +368,7 @@
         <button type="button" class="plan" data-index="2" aria-pressed="false">
           <span class="plan-top">
             <span class="plan-name">Weekly Classic</span>
-            <span class="price">₹490</span>
+            <span class="price">₹489</span>
           </span>
           <span class="plan-detail">Weekly package • 7 din</span>
           <span class="select-hint">Tap to select</span>
@@ -377,7 +377,7 @@
         <button type="button" class="plan" data-index="3" aria-pressed="false">
           <span class="plan-top">
             <span class="plan-name">Weekly Premium</span>
-            <span class="price">₹560</span>
+            <span class="price">₹559</span>
           </span>
           <span class="plan-detail">Weekly package • 7 din</span>
           <span class="select-hint">Tap to select</span>
@@ -386,7 +386,7 @@
         <button type="button" class="plan" data-index="4" aria-pressed="false">
           <span class="plan-top">
             <span class="plan-name">Classic Tiffin</span>
-            <span class="price">₹70</span>
+            <span class="price">₹69</span>
           </span>
           <span class="plan-detail">Single-day package • 1 din</span>
           <span class="select-hint">Tap to select</span>
@@ -395,7 +395,7 @@
         <button type="button" class="plan" data-index="5" aria-pressed="false">
           <span class="plan-top">
             <span class="plan-name">Premium Tiffin</span>
-            <span class="price">₹80</span>
+            <span class="price">₹79</span>
           </span>
           <span class="plan-detail">Single-day package • 1 din</span>
           <span class="select-hint">Tap to select</span>
@@ -445,7 +445,7 @@
 
         <div class="summary" id="summary" aria-live="polite">
           <p><strong>Selected Plan:</strong> Monthly Classic Tiffin</p>
-          <p><strong>Price:</strong> ₹2,200</p>
+          <p><strong>Price:</strong> ₹1,999</p>
           <p><strong>Meal Time:</strong> Lunch</p>
         </div>
 
@@ -454,8 +454,7 @@
         </button>
 
         <p class="small-note">
-          Order bhejne par WhatsApp khulega. Order confirm karne ke liye
-          kitchen se reply ka intezar karein.
+         Please open WhatsApp to proceed with your order. Kindly wait for a reply from the kitchen to confirm your order.
         </p>
       </form>
 
@@ -467,7 +466,7 @@
         <div class="owner-panel" id="ownerPanel">
           <h3>Shri Bala G Kitchen — Owner Info</h3>
           <p><strong>WhatsApp orders:</strong> +91 78787 27180</p>
-          <p>Customer ke orders seedhe WhatsApp par aayenge.</p>
+          <p>Customers or orders will come directly via WhatsApp..</p>
           <p><strong>Plan prices:</strong></p>
           <ul>
             <li>Monthly Classic: ₹2,200</li>
@@ -478,9 +477,7 @@
             <li>Premium Tiffin: ₹80</li>
           </ul>
           <p class="small-note">
-            Note: Yeh basic static website hai. Is panel mein customer orders
-            save nahi hote. Private admin login aur order database ke liye
-            alag backend setup chahiye.
+           
           </p>
         </div>
       </div>
@@ -502,12 +499,12 @@
       const whatsappNumber = "917878727180";
 
       const plans = [
-        { name: "Monthly Classic Tiffin", price: 2200, detail: "Monthly package • 30 din" },
-        { name: "Monthly Premium Tiffin", price: 2000, detail: "Monthly package • 30 din" },
-        { name: "Weekly Classic", price: 490, detail: "Weekly package • 7 din" },
-        { name: "Weekly Premium", price: 560, detail: "Weekly package • 7 din" },
-        { name: "Classic Tiffin", price: 70, detail: "Single-day package • 1 din" },
-        { name: "Premium Tiffin", price: 80, detail: "Single-day package • 1 din" }
+        { name: "Monthly Classic Tiffin", price: 2200, detail: "Monthly package • 30 days" },
+        { name: "Monthly Premium Tiffin", price: 2000, detail: "Monthly package • 30 days" },
+        { name: "Weekly Classic", price: 490, detail: "Weekly package • 7 days" },
+        { name: "Weekly Premium", price: 560, detail: "Weekly package • 7 days" },
+        { name: "Classic Tiffin", price: 70, detail: "Single-day package • 1 day" },
+        { name: "Premium Tiffin", price: 80, detail: "Single-day package • 1 day" }
       ];
 
       let selectedPlan = 0;
@@ -584,11 +581,10 @@
           "Plan: " + plan.name,
           "Price: " + formatPrice(plan.price),
           "Meal Time: " + meal.value,
-          "Start Date: " + startDate,
           "Delivery Address: " + address,
           "Extra Instructions: " + (instructions || "None"),
           "",
-          "Kripya order confirm karein."
+          "please conform a order ."
         ].join("\n");
 
         const url = "https://wa.me/" + whatsappNumber +
