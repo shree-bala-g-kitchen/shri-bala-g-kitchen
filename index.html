@@ -1,73 +1,185 @@
-
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shri Bala G Kitchen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shri Bala G Kitchen | Tiffin Service</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#fffaf2;color:#292015}
-header{background:#641b18;color:white;padding:22px 15px;text-align:center}
-header h1{margin:0;font-size:27px}
-header p{margin:8px 0 0}
-.hero{padding:38px 18px;text-align:center;background:#f4dfbd}
-.hero h2{font-size:29px;margin:0 0 12px}
-.hero p{line-height:1.6}
-.btn{display:inline-block;background:#168447;color:white;text-decoration:none;padding:13px 19px;border-radius:9px;font-weight:bold;margin:8px 4px}
-.menu{padding:22px 15px;max-width:750px;margin:auto}
-.menu h2{text-align:center;color:#641b18}
-.item{background:white;border:1px solid #ead9c4;padding:16px;margin:12px 0;border-radius:12px;display:flex;justify-content:space-between;gap:12px}
-.item strong{color:#641b18}
-.note{text-align:center;font-size:13px;color:#665b50}
-footer{text-align:center;background:#641b18;color:white;padding:20px}
+body{margin:0;background:#fffdf7;color:#29231f;font-family:Arial,sans-serif}
+header{background:#fff9e9;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;border-bottom:1px solid #eee3c9}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{background:#b83e0c;color:white;border-radius:50%;padding:13px;font-size:22px}
+h1{font-family:Georgia,serif;font-size:22px;margin:0}
+.sub{font-size:13px;color:#777;margin-top:5px}
+button,a{cursor:pointer}
+.btn{display:inline-block;background:#bd400d;color:white;border:0;border-radius:24px;padding:12px 18px;text-decoration:none;font-size:15px}
+.light{background:white;color:#29231f}
+main{max-width:720px;margin:auto;padding:20px}
+h2{font-family:Georgia,serif;font-size:28px}
+.plan{background:white;border:1px solid #e5e1da;border-radius:30px;padding:24px;margin:16px 0;cursor:pointer}
+.plan.selected{border:2px solid #bd400d;background:#fff9e9;box-shadow:0 3px 0 #f0d5c5}
+.planhead{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.planname{font-size:19px;font-weight:bold}
+.price{font-family:Georgia,serif;font-weight:bold;color:#b83e0c;font-size:25px;white-space:nowrap}
+.muted{color:#85817b;margin-top:12px}
+label{display:block;margin:18px 0 7px}
+input,select,textarea{width:100%;padding:14px;border:1px solid #ddd6cb;border-radius:12px;background:white;font-size:16px}
+.full{width:100%;margin-top:22px;border-radius:14px;font-size:17px}
+.summary{padding:16px;background:#fff3df;border-radius:15px;margin-top:18px;line-height:1.8}
+footer{text-align:center;background:#641b18;color:white;padding:22px;margin-top:25px}
+.small{font-size:13px;color:#777;line-height:1.5}
+#ownerPanel{display:none;background:white;border:1px solid #ddd;padding:18px;border-radius:14px;margin-top:20px}
+@media(max-width:430px){header{padding:12px}h1{font-size:19px}.brand{gap:7px}.logo{padding:10px}.plan{padding:19px}.planname{font-size:17px}.price{font-size:22px}}
 </style>
 </head>
 <body>
 <header>
-<h1>Shri Bala G Kitchen</h1>
-<p>Fresh Taste • Quality Food • Made with Love</p>
+ <div class="brand">
+  <div class="logo">♨️</div>
+  <div><h1>Shri Bala G Kitchen</h1><div class="sub">Ghar Ka Tiffin • 10 km Delivery</div></div>
+ </div>
+ <a class="btn" href="#order">Order Karein</a>
 </header>
-<section class="hero">
-<h2>Welcome to Our Kitchen ❤️</h2>
-<p>Delicious food, made fresh for you.<br>Explore our menu and order directly on WhatsApp.</p>
-<a class="btn" href="#menu">View Menu</a>
-<a class="btn" id="topOrder" href="#">Order on WhatsApp</a>
-</section>
-<section class="menu" id="menu">
-<h2>Our Menu 🍽️</h2>
-<p class="note">Sample prices below — update them before accepting orders.</p>
-<div id="items"></div>
-</section>
+
+<main>
+ <h2>Apna Plan Chunein</h2>
+ <p class="muted">Fresh ghar jaisa khana, aapki pasand ke hisaab se.</p>
+
+ <div id="plans"></div>
+
+ <label for="meal">Meal Time</label>
+ <select id="meal">
+  <option>Lunch</option>
+  <option>Dinner</option>
+  <option>Lunch & Dinner</option>
+ </select>
+
+ <section id="order">
+  <h2>Order Details</h2>
+  <label for="customer">Aapka Naam *</label>
+  <input id="customer" placeholder="Apna naam likhein">
+
+  <label for="phone">Mobile Number *</label>
+  <input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10 digit mobile number">
+
+  <label for="address">Delivery Address *</label>
+  <textarea id="address" rows="3" placeholder="Poora address aur area likhein"></textarea>
+
+  <label for="startDate">Start Date</label>
+  <input id="startDate" type="date">
+
+  <label for="notes">Extra Instructions (optional)</label>
+  <textarea id="notes" rows="2" placeholder="Food preference ya koi instruction"></textarea>
+
+  <div class="summary" id="summary">Pehle apna tiffin plan select karein.</div>
+  <button class="btn full" onclick="sendOrder()">WhatsApp Par Order Karein ↗️</button>
+  <p class="small">Order bhejne par WhatsApp khulega. Order confirm karne ke liye kitchen se reply ka intezar karein.</p>
+ </section>
+
+ <button class="btn light full" onclick="toggleOwner()">Owner Panel</button>
+ <section id="ownerPanel">
+  <h3>Owner Quick Access</h3>
+  <p class="small">Owner panel ka demo access. Yeh secure online admin system nahi hai.</p>
+  <input id="ownerPin" type="password" placeholder="Demo PIN">
+  <button class="btn full" onclick="ownerLogin()">Open Panel</button>
+  <div id="ownerInfo"></div>
+ </section>
+</main>
+
 <footer>
-<h3>Shri Bala G Kitchen</h3>
-<p>Thank you for choosing us!</p>
-<p>For orders, contact us on WhatsApp.</p>
+ <h3>Shri Bala G Kitchen</h3>
+ <p>Ghar ka Tiffin • Fresh • Delicious ❤️</p>
+ <a class="btn" href="https://wa.me/917878727180">WhatsApp Contact</a>
 </footer>
+
 <script>
-const WHATSAPP_NUMBER = "91XXXXXXXXXX";
-const menu = [
-["Veg Burger",79],
-["French Fries",69],
-["Choco Lava",99],
-["Brownie",89],
-["Sizzler Brownie",149]
+const WHATSAPP_NUMBER = "917878727180";
+const OWNER_PIN = "8080";
+
+const plans = [
+ {name:"Monthly Classic Tiffin",price:2200,detail:"Monthly package • 30 din"},
+ {name:"Monthly Premium Tiffin",price:2000,detail:"Monthly package • 30 din"},
+ {name:"Weekly Classic",price:490,detail:"Weekly package • 7 din"},
+ {name:"Weekly Premium",price:560,detail:"Weekly package • 7 din"},
+ {name:"Classic Tiffin",price:70,detail:"Ek din ke liye • 1 din"},
+ {name:"Premium Tiffin",price:80,detail:"Ek din ke liye • 1 din"}
 ];
-const items = document.getElementById("items");
-menu.forEach(([name,price])=>{
-const row=document.createElement("div");
-row.className="item";
-const title=document.createElement("span");
-title.textContent=name;
-const cost=document.createElement("strong");
-cost.textContent="₹"+price;
-row.append(title,cost);
-items.appendChild(row);
-});
-function orderLink(){
-return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent("Hello Shri Bala G Kitchen, I want to place an order.");
+
+let selected = 0;
+
+function renderPlans(){
+ document.getElementById("plans").innerHTML = plans.map((p,i)=>`
+  <div class="plan ${i===selected?'selected':''}" onclick="choosePlan(${i})">
+   <div class="planhead">
+    <div class="planname">${p.name}</div>
+    <div class="price">₹${p.price.toLocaleString("en-IN")}</div>
+   </div>
+   <div class="muted">${p.detail}</div>
+  </div>
+ `).join("");
+ updateSummary();
 }
-document.getElementById("topOrder").href=orderLink();
+
+function choosePlan(i){
+ selected=i;
+ renderPlans();
+}
+
+function updateSummary(){
+ const p=plans[selected];
+ document.getElementById("summary").innerHTML =
+ `<strong>Selected Plan:</strong> ${p.name}<br>
+ <strong>Price:</strong> ₹${p.price.toLocaleString("en-IN")}<br>
+ <strong>Meal Time:</strong> ${document.getElementById("meal").value}`;
+}
+
+document.getElementById("meal").addEventListener("change",updateSummary);
+
+function sendOrder(){
+ const name=document.getElementById("customer").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const address=document.getElementById("address").value.trim();
+ const date=document.getElementById("startDate").value || "Not selected";
+ const notes=document.getElementById("notes").value.trim();
+ const p=plans[selected];
+
+ if(!name||!phone||!address){
+  alert("Naam, mobile number aur delivery address bharein.");
+  return;
+ }
+ if(!/^[6-9]\d{9}$/.test(phone)){
+  alert("Sahi 10 digit Indian mobile number bharein.");
+  return;
+ }
+
+ const message =
+ NAMASTE SHRI BALA G KITCHEN!\n\nNEW TIFFIN ORDER\n+
+ Name: ${name}\nCustomer Mobile: ${phone}\nAddress: ${address}\n+
+ Plan: ${p.name}\nPrice: Rs ${p.price}\nMeal Time: ${document.getElementById("meal").value}\n+
+ Start Date: ${date}\nInstructions: ${notes||"None"}\n\nPlease confirm my order.;
+
+ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank");
+}
+
+function toggleOwner(){
+ const panel=document.getElementById("ownerPanel");
+ panel.style.display=panel.style.display==="block"?"none":"block";
+}
+
+function ownerLogin(){
+ if(document.getElementById("ownerPin").value!==OWNER_PIN){
+  alert("Incorrect PIN");
+  return;
+ }
+ document.getElementById("ownerInfo").innerHTML =
+ "<p>WhatsApp orders: +91 7878727180</p>"+
+ "<p>Menu prices currently displayed:</p>"+
+ plans.map(p=>${p.name}: ₹${p.price}).join("<br>")+
+ "<p class='small'>Demo only: orders are sent to WhatsApp; they are not stored in a private online database.</p>";
+}
+
+renderPlans();
 </script>
 </body>
 </html>
